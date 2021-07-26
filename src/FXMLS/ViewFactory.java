@@ -3,6 +3,7 @@ package FXMLS;
 import Controller.BaseController;
 import Controller.LoginController;
 import Controller.MainWindowController;
+import Controller.UIUpdateController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,6 +26,11 @@ public class ViewFactory {
 
     public void showMainWindow(){
         BaseController controller = new MainWindowController(emailManager,this,"mainWindow.fxml");
+        initializeScene(controller);
+    }
+
+    public void showUIUpdateWindow(){
+        BaseController controller = new UIUpdateController(emailManager,this,"uiUpdate.fxml");
         initializeScene(controller);
     }
 

@@ -28,7 +28,7 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @FXML
     void optionsMenuPressed() {
-
+        viewFactory.showUIUpdateWindow();
     }
 
     @Override
