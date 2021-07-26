@@ -2,6 +2,7 @@ package FXMLS;
 
 import Controller.BaseController;
 import Controller.LoginController;
+import Controller.MainWindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +20,15 @@ public class ViewFactory {
 
     public void showLoginWindow(){
         BaseController controller = new LoginController(emailManager,this,"login.fxml");
+        initializeScene(controller);
+    }
+
+    public void showMainWindow(){
+        BaseController controller = new MainWindowController(emailManager,this,"mainWindow.fxml");
+        initializeScene(controller);
+    }
+
+    private void initializeScene(BaseController controller) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(controller.getFxmlName()));
         loader.setController(controller);
@@ -31,7 +41,10 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
+    }
 
+    public void closeStage(Stage stage){
+        stage.close();
     }
 
 }

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.EmailManager;
 
 import java.net.URL;
@@ -27,7 +28,9 @@ public class LoginController extends BaseController implements Initializable {
 
     @FXML
     void loginButtonPressed() {
-
+        Stage stage = (Stage)errorMsg.getScene().getWindow();
+        viewFactory.closeStage(stage);
+        viewFactory.showMainWindow();
     }
 
 
