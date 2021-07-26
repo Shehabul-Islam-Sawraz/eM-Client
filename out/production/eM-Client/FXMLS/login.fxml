@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #0598ff;">
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #0598ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="122.0" fitWidth="284.0" layoutX="59.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,7 +23,7 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane layoutX="350.0" prefHeight="500.0" prefWidth="350.0">
+      <AnchorPane layoutX="350.0" prefHeight="500.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField fx:id="email" layoutX="142.0" layoutY="212.0" promptText="s@gmail.com" style="-fx-background-color: transperant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
             <PasswordField fx:id="password" layoutX="142.0" layoutY="261.0" promptText="Password" style="-fx-background-color: transperant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
