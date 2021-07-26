@@ -1,5 +1,6 @@
 package sample;
 
+import FXMLS.ViewFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,12 +18,16 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();*/
-        FXMLLoader loader = new FXMLLoader();
+
+        /*FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXMLS/login.fxml"));
         Parent root = loader.load();
         //LoginController controller = loader.getController();
         stage.setScene(new Scene(root));
-        stage.show();
+        stage.show();*/
+
+        ViewFactory viewFactory = new ViewFactory(new EmailManager());
+        viewFactory.showLoginWindow();
     }
 
 

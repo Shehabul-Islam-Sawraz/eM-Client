@@ -1,11 +1,17 @@
 package Controller;
 
+import FXMLS.ViewFactory;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.web.WebView;
+import sample.EmailManager;
 
-public class MainWindowController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainWindowController extends BaseController implements Initializable {
 
     @FXML
     private TreeView<?> emailsTreeView;
@@ -16,8 +22,17 @@ public class MainWindowController {
     @FXML
     private WebView emailsWebView;
 
+    public MainWindowController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
+        super(emailManager, viewFactory, fxmlName);
+    }
+
     @FXML
     void optionsMenuPressed() {
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }
