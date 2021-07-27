@@ -4,6 +4,8 @@ import Controller.BaseController;
 import Controller.LoginController;
 import Controller.MainWindowController;
 import Controller.UIUpdateController;
+import UI.ColorTheme;
+import UI.FontSize;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,10 +16,30 @@ import java.io.IOException;
 
 public class ViewFactory {
     private EmailManager emailManager;
+    //UI options handling
+    private FontSize fontSize = FontSize.MEDIUM;
+    private ColorTheme colorTheme = ColorTheme.DEFAULT;
+
+    public FontSize getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(FontSize fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public ColorTheme getColorTheme() {
+        return colorTheme;
+    }
+
+    public void setColorTheme(ColorTheme colorTheme) {
+        this.colorTheme = colorTheme;
+    }
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
     }
+
 
     public void showLoginWindow(){
         BaseController controller = new LoginController(emailManager,this,"login.fxml");
