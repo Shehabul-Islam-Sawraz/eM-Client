@@ -31,6 +31,11 @@ public class MainWindowController extends BaseController implements Initializabl
         viewFactory.showUIUpdateWindow();
     }
 
+    @FXML
+    void addNewAccountPressed() {
+        viewFactory.showLoginWindow();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

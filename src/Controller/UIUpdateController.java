@@ -4,11 +4,11 @@ import FXMLS.ViewFactory;
 import UI.ColorTheme;
 import UI.FontSize;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import sample.EmailManager;
 
@@ -25,12 +25,15 @@ public class UIUpdateController extends BaseController implements Initializable 
 
     @FXML
     void applyButtonPressed() {
-
+        viewFactory.setColorTheme(themePicker.getValue());
+        viewFactory.setFontSize(FontSize.values()[(int)fontSizePicker.getValue()]);
+        viewFactory.updateUI();
     }
 
     @FXML
     void cancelButtonPressed() {
-
+        Stage stage = (Stage) fontSizePicker.getScene().getWindow();
+        viewFactory.closeStage(stage);
     }
 
 
