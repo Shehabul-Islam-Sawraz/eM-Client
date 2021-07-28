@@ -1,6 +1,9 @@
 package Controller;
 
+import Controller.EmailServices.EmailLoginServiceResult;
+import Controller.EmailServices.LoginService;
 import FXMLS.ViewFactory;
+import Model.EmailAccount;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -28,9 +31,31 @@ public class LoginController extends BaseController implements Initializable {
 
     @FXML
     void loginButtonPressed() {
+        if(checkEmailAndPass()){
+            EmailAccount emailAccount = new EmailAccount(email.getText(),password.getText());
+            LoginService loginService = new LoginService(emailAccount,emailManager);
+            EmailLoginServiceResult result = loginService.login();
+            switch (result) {
+                case SUCCESS:
+                    System.out.println("Login successful!!!" + emailAccount);
+                    return;
+            }
+        }
         Stage stage = (Stage)errorMsg.getScene().getWindow();
         viewFactory.closeStage(stage);
         viewFactory.showMainWindow();
+    }
+
+    private boolean checkEmailAndPass(){
+        if(email.getText().isEmpty()){
+            errorMsg.setText("Please provide your email address!!");
+            return false;
+        }
+        if(password.getText().isEmpty()){
+            errorMsg.setText("Please enter the password!!");
+            return false;
+        }
+        return true;
     }
 
 
