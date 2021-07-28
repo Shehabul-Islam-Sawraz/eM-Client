@@ -38,12 +38,12 @@ public class LoginController extends BaseController implements Initializable {
             switch (result) {
                 case SUCCESS:
                     System.out.println("Login successful!!!" + emailAccount);
+                    Stage stage = (Stage)errorMsg.getScene().getWindow();
+                    viewFactory.closeStage(stage);
+                    viewFactory.showMainWindow();
                     return;
             }
         }
-        Stage stage = (Stage)errorMsg.getScene().getWindow();
-        viewFactory.closeStage(stage);
-        viewFactory.showMainWindow();
     }
 
     private boolean checkEmailAndPass(){

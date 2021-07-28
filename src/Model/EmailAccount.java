@@ -1,6 +1,9 @@
 package Model;
 
+import com.sun.mail.util.MailSSLSocketFactory;
+
 import javax.mail.Store;
+import java.security.GeneralSecurityException;
 import java.util.Properties;
 
 public class EmailAccount {
@@ -13,6 +16,15 @@ public class EmailAccount {
         this.emailAddress = emailAddress;
         this.password = password;
         properties = new Properties();
+        MailSSLSocketFactory sf = null;
+        try {
+            sf = new MailSSLSocketFactory();
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+        sf.setTrustAllHosts(true);
+        properties.put("mail.imaps.ssl.trust", "*");
+        properties.put("mail.imaps.ssl.socketFactory", sf);
         properties.put("incomingHost", "imap.gmail.com");
         properties.put("mail.store.protocol", "imaps");
 
