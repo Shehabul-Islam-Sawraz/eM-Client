@@ -7,6 +7,8 @@ import java.security.GeneralSecurityException;
 import java.util.Properties;
 
 public class EmailAccount {
+
+    //Hello
     private String emailAddress;
     private String password;
     private Properties properties;
