@@ -34,15 +34,26 @@ public class LoginController extends BaseController implements Initializable {
         if(checkEmailAndPass()){
             EmailAccount emailAccount = new EmailAccount(email.getText(),password.getText());
             LoginService loginService = new LoginService(emailAccount,emailManager);
-            EmailLoginServiceResult result = loginService.login();
-            switch (result) {
-                case SUCCESS:
-                    System.out.println("Login successful!!!" + emailAccount);
-                    Stage stage = (Stage)errorMsg.getScene().getWindow();
-                    viewFactory.closeStage(stage);
-                    viewFactory.showMainWindow();
-                    return;
-            }
+            loginService.start();
+            loginService.setOnSucceeded(e->{
+                EmailLoginServiceResult result = loginService.getValue();
+                switch (result) {
+                    case SUCCESS:
+                        System.out.println("Login successful!!!" + emailAccount);
+                        Stage stage = (Stage)errorMsg.getScene().getWindow();
+                        viewFactory.closeStage(stage);
+                        viewFactory.showMainWindow();
+                        return;
+                    case FAILED_BY_CREDENTIALS:
+                        errorMsg.setText("Invalid Credentials!!");
+                        return;
+                    case FAILED_BY_UNEXPECTED_ERROR:
+                        errorMsg.setText("Unexpected Error!!");
+                        return;
+                    default:
+                        return;
+                }
+            });
         }
     }
 

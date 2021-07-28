@@ -1,11 +1,13 @@
 package Controller.EmailServices;
 
 import Model.EmailAccount;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import sample.EmailManager;
 
 import javax.mail.*;
 
-public class LoginService {
+public class LoginService extends Service<EmailLoginServiceResult> {
     EmailAccount emailAccount;
     EmailManager emailManager;
 
@@ -14,7 +16,7 @@ public class LoginService {
         this.emailManager = emailManager;
     }
 
-    public EmailLoginServiceResult login(){
+    private EmailLoginServiceResult login(){
         Authenticator authenticator = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -42,5 +44,15 @@ public class LoginService {
             return  EmailLoginServiceResult.FAILED_BY_UNEXPECTED_ERROR;
         }
         return EmailLoginServiceResult.SUCCESS;
+    }
+
+    @Override
+    protected Task<EmailLoginServiceResult> createTask() {
+        return new Task<EmailLoginServiceResult>() {
+            @Override
+            protected EmailLoginServiceResult call() throws Exception {
+                return login();
+            }
+        };
     }
 }
