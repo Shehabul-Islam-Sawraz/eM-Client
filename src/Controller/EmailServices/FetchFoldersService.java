@@ -32,6 +32,14 @@ public class FetchFoldersService extends Service<Void> {
             EmailTreeItem<String> emailTreeItem = new EmailTreeItem<String>(folder.getName());
             foldersRoot.getChildren().add((emailTreeItem));
             foldersRoot.setExpanded(true);
+            try {
+                if(folder.getType() == Folder.HOLDS_FOLDERS) {
+                    Folder[] subFolders =  folder.list();
+                    handleFolders(subFolders, emailTreeItem);
+                }
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }
 
     }

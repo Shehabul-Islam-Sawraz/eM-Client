@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class ViewFactory {
     private EmailManager emailManager;
     private ArrayList<Stage> activeStages;
+    private boolean isMainWindowOpen=false;
     //UI options handling
     private FontSize fontSize = FontSize.MEDIUM;
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
@@ -38,6 +39,14 @@ public class ViewFactory {
         this.colorTheme = colorTheme;
     }
 
+    public boolean isMainWindowOpen() {
+        return isMainWindowOpen;
+    }
+
+    public void setMainWindowOpen(boolean mainWindowOpen) {
+        this.isMainWindowOpen = mainWindowOpen;
+    }
+
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
         activeStages = new ArrayList<>();
@@ -52,6 +61,7 @@ public class ViewFactory {
     public void showMainWindow(){
         BaseController controller = new MainWindowController(emailManager,this,"mainWindow.fxml");
         initializeScene(controller);
+        isMainWindowOpen=true;
     }
 
     public void showUIUpdateWindow(){

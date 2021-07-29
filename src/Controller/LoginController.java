@@ -42,7 +42,9 @@ public class LoginController extends BaseController implements Initializable {
                         System.out.println("Login successful!!!" + emailAccount);
                         Stage stage = (Stage)errorMsg.getScene().getWindow();
                         viewFactory.closeStage(stage);
-                        viewFactory.showMainWindow();
+                        if(!viewFactory.isMainWindowOpen()){
+                            viewFactory.showMainWindow();
+                        }
                         return;
                     case FAILED_BY_CREDENTIALS:
                         errorMsg.setText("Invalid Credentials!!");
