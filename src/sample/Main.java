@@ -28,6 +28,7 @@ public class Main extends Application {
 
         ViewFactory viewFactory = new ViewFactory(new EmailManager());
         viewFactory.showLoginWindow();
+
     }
 
 

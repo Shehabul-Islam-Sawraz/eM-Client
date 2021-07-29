@@ -1,22 +1,21 @@
 package sample;
 
+import Controller.EmailServices.FetchFoldersService;
 import Model.EmailAccount;
+import Model.EmailTreeItem;
 import javafx.scene.control.TreeItem;
 
 public class EmailManager {
-    private TreeItem<String> foldersRoot = new TreeItem<String>("");
+    private EmailTreeItem<String> foldersRoot = new EmailTreeItem(""); // Custom Tree Item
 
     public TreeItem<String> getFoldersRoot(){
         return foldersRoot;
     }
 
     public void addEmailAccount(EmailAccount emailAccount){
-        TreeItem<String> treeItem = new TreeItem<String>(emailAccount.getEmailAddress());
-        treeItem.setExpanded(true);
-        treeItem.getChildren().add(new TreeItem<String>("INBOX"));
-        treeItem.getChildren().add(new TreeItem<String>("Sent"));
-        treeItem.getChildren().add(new TreeItem<String>("Folder1"));
-        treeItem.getChildren().add(new TreeItem<String>("Spam"));
+        EmailTreeItem<String> treeItem = new EmailTreeItem<String>(emailAccount.getEmailAddress());
+        FetchFoldersService fetchFoldersService = new FetchFoldersService(emailAccount.getStore(), treeItem);
+        fetchFoldersService.start();
         foldersRoot.getChildren().add(treeItem);
     }
 }
