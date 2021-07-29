@@ -8,4 +8,5 @@ module eM.Client {
 
     opens sample;
     opens Controller to javafx.fxml;
+    opens Model;
 }
