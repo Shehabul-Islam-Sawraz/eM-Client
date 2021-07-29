@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class MainWindowController extends BaseController implements Initializable {
 
     @FXML
-    private TreeView<?> emailsTreeView;
+    private TreeView<String> emailsTreeView;
 
     @FXML
     private TableView<?> emailsTableView;
@@ -38,6 +38,11 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setEmailsTreeView();
+    }
 
+    private void setEmailsTreeView() {
+        emailsTreeView.setRoot(emailManager.getFoldersRoot());
+        emailsTreeView.setShowRoot(false);
     }
 }

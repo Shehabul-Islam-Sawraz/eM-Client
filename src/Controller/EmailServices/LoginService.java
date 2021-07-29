@@ -19,7 +19,7 @@ public class LoginService extends Service<EmailLoginServiceResult> {
     private EmailLoginServiceResult login(){
         Authenticator authenticator = new Authenticator() {
             @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
+            protected PasswordAuthentication  getPasswordAuthentication() {
                 return new PasswordAuthentication(emailAccount.getEmailAddress(), emailAccount.getPassword());
             }
         };
@@ -30,6 +30,7 @@ public class LoginService extends Service<EmailLoginServiceResult> {
                     emailAccount.getEmailAddress(),
                     emailAccount.getPassword());
             emailAccount.setStore(store);
+            emailManager.addEmailAccount(emailAccount);
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
             return EmailLoginServiceResult.FAILED_BY_NETWORK;
