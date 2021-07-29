@@ -2,13 +2,16 @@ package Controller;
 
 import FXMLS.ViewFactory;
 import Model.EmailMessage;
+import Model.EmailSizeModifier;
 import Model.EmailTreeItem;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import sample.EmailManager;
 
 import java.net.URL;
@@ -33,7 +36,7 @@ public class MainWindowController extends BaseController implements Initializabl
     private TableColumn<EmailMessage, String> recipientCol;
 
     @FXML
-    private TableColumn<EmailMessage, Integer> sizeCol;
+    private TableColumn<EmailMessage, EmailSizeModifier> sizeCol;
 
     @FXML
     private TableColumn<EmailMessage, Date> dateCol;
@@ -59,6 +62,7 @@ public class MainWindowController extends BaseController implements Initializabl
         setEmailsTreeView();
         setUpEmailsTableView();
         setUpFolderSelection();
+        setUpBoldRows();
     }
 
     private void setEmailsTreeView() {
@@ -70,7 +74,7 @@ public class MainWindowController extends BaseController implements Initializabl
         senderCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, String>("sender")));
         subjectCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, String>("subject")));
         recipientCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, String>("recipient")));
-        sizeCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, Integer>("size")));
+        sizeCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, EmailSizeModifier>("size")));
         dateCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, Date>("date")));
     }
 
@@ -79,6 +83,27 @@ public class MainWindowController extends BaseController implements Initializabl
             EmailTreeItem<String> item = (EmailTreeItem<String>)emailsTreeView.getSelectionModel().getSelectedItem();
             if (item != null) {
                 emailsTableView.setItems(item.getEmailMessages());
+            }
+        });
+    }
+
+    private void setUpBoldRows() {
+        emailsTableView.setRowFactory(new Callback<>() {
+            @Override
+            public TableRow<EmailMessage> call(TableView<EmailMessage> param) {
+                return new TableRow<>() {
+                    @Override
+                    protected void updateItem(EmailMessage item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            if (item.isRead()) {
+                                setStyle("");
+                            } else {
+                                setStyle("-fx-font-weight: bold");
+                            }
+                        }
+                    }
+                };
             }
         });
     }
