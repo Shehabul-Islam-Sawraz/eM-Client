@@ -17,7 +17,7 @@ public class EmailManager {
     private FolderUpdateService updateService;
     private List<Folder> folderList = new ArrayList<>();
 
-    private EmailMessage selectEmail;
+    private EmailMessage selectedEmail;
     private EmailTreeItem<String> selectedFolder;
 
     public EmailManager(){
@@ -25,12 +25,12 @@ public class EmailManager {
         updateService.start();
     }
 
-    public EmailMessage getSelectEmail() {
-        return selectEmail;
+    public EmailMessage getSelectedEmail() {
+        return selectedEmail;
     }
 
-    public void setSelectEmail(EmailMessage selectEmail) {
-        this.selectEmail = selectEmail;
+    public void setSelectedEmail(EmailMessage selectedEmail) {
+        this.selectedEmail = selectedEmail;
     }
 
     public EmailTreeItem<String> getSelectedFolder() {
@@ -58,9 +58,28 @@ public class EmailManager {
 
     public void setRead() {
         try {
-            selectEmail.setRead(true);
-            selectEmail.getMessage().setFlag(Flags.Flag.SEEN, true);
+            selectedEmail.setRead(true);
+            selectedEmail.getMessage().setFlag(Flags.Flag.SEEN, true);
             selectedFolder.decrementMessagesCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setUnRead() {
+        try {
+            selectedEmail.setRead(false);
+            selectedEmail.getMessage().setFlag(Flags.Flag.SEEN, false);
+            selectedFolder.incrementMessagesCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteSelectedMessage() {
+        try {
+            selectedEmail.getMessage().setFlag(Flags.Flag.DELETED, true);
+            selectedFolder.getEmailMessages().remove(selectedEmail);
         } catch (Exception e) {
             e.printStackTrace();
         }
