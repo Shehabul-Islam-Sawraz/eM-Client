@@ -46,6 +46,7 @@ public class MainWindowController extends BaseController implements Initializabl
     private MessageRenderService renderService;
     private MenuItem markUnreadMenuItem = new MenuItem("Mark unread");
     private MenuItem deleteMessageMenuItem = new MenuItem("Delete message");
+    private MenuItem showMessageDetailsMenuItem = new MenuItem("View details");
 
     public MainWindowController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
         super(emailManager, viewFactory, fxmlName);
@@ -86,6 +87,9 @@ public class MainWindowController extends BaseController implements Initializabl
             emailManager.deleteSelectedMessage();
             emailsWebView.getEngine().loadContent("");
         });
+        showMessageDetailsMenuItem.setOnAction(event -> {
+            viewFactory.showEmailDetailsWindow();
+        });
     }
 
     private void setEmailsTreeView() {
@@ -100,7 +104,7 @@ public class MainWindowController extends BaseController implements Initializabl
         sizeCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, EmailSizeModifier>("size")));
         dateCol.setCellValueFactory((new PropertyValueFactory<EmailMessage, Date>("date")));
 
-        emailsTableView.setContextMenu(new ContextMenu(markUnreadMenuItem, deleteMessageMenuItem));
+        emailsTableView.setContextMenu(new ContextMenu(markUnreadMenuItem, deleteMessageMenuItem, showMessageDetailsMenuItem));
     }
 
     private void setUpFolderSelection() {

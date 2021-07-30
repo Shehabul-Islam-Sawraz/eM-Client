@@ -5,13 +5,13 @@ import Controller.LoginController;
 import Controller.MainWindowController;
 import Controller.UIUpdateController;
 import Controller.ComposeEmailController;
+import Controller.EmailDetailsController;
 import UI.ColorTheme;
 import UI.FontSize;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.Controller;
 import sample.EmailManager;
 
 import java.io.IOException;
@@ -79,6 +79,11 @@ public class ViewFactory {
 
     public void showComposeEmailWindow(){
         BaseController controller = new ComposeEmailController(emailManager,this,"ComposeEmail.fxml");
+        initializeScene(controller);
+    }
+
+    public void showEmailDetailsWindow(){
+        BaseController controller = new EmailDetailsController(emailManager, this, "EmailDetails.fxml");
         initializeScene(controller);
     }
 
