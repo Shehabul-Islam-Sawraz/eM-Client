@@ -4,6 +4,7 @@ import Controller.BaseController;
 import Controller.LoginController;
 import Controller.MainWindowController;
 import Controller.UIUpdateController;
+import Controller.ComposeEmailController;
 import UI.ColorTheme;
 import UI.FontSize;
 import javafx.fxml.FXMLLoader;
@@ -67,6 +68,11 @@ public class ViewFactory {
 
     public void showUIUpdateWindow(){
         BaseController controller = new UIUpdateController(emailManager,this,"uiUpdate.fxml");
+        initializeScene(controller);
+    }
+
+    public void showComposeEmailWindow(){
+        BaseController controller = new ComposeEmailController(emailManager,this,"ComposeEmail.fxml");
         initializeScene(controller);
     }
 

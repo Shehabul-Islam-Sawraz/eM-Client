@@ -61,6 +61,12 @@ public class MainWindowController extends BaseController implements Initializabl
         viewFactory.showLoginWindow();
     }
 
+    @FXML
+    void composeNewPressed() {
+        viewFactory.showComposeEmailWindow();
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setEmailsTreeView();
