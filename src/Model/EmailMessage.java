@@ -54,6 +54,12 @@ public class EmailMessage {
     public Message getMessage(){
         return this.message;
     }
+    public boolean getHasAttachments() {
+        return hasAttachments;
+    }
+    public List<MimeBodyPart> getAttachmentList(){
+        return attachmentList;
+    }
 
     public void addAttachment(MimeBodyPart mimeBodyPart) {
         hasAttachments = true;

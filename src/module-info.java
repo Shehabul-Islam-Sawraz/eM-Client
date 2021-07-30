@@ -5,6 +5,7 @@ module eM.Client {
     requires javafx.web;
     requires java.mail;
     requires activation;
+    requires java.desktop;
 
     opens sample;
     opens Controller to javafx.fxml;
