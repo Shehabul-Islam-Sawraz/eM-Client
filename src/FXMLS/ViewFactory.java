@@ -24,6 +24,11 @@ public class ViewFactory {
     //UI options handling
     private FontSize fontSize = FontSize.MEDIUM;
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
+    private Scene loginScene=null;
+
+    public void setLoginScene(Scene scene){
+        this.loginScene = scene;
+    }
 
     public FontSize getFontSize() {
         return fontSize;
@@ -57,7 +62,8 @@ public class ViewFactory {
 
     public void showLoginWindow(){
         BaseController controller = new LoginController(emailManager,this,"login.fxml");
-        initializeScene(controller);
+        Scene scene = initializeScene(controller);
+        setLoginScene(scene);
     }
 
     public void showMainWindow(){
@@ -76,7 +82,7 @@ public class ViewFactory {
         initializeScene(controller);
     }
 
-    private void initializeScene(BaseController controller) {
+    private Scene initializeScene(BaseController controller) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(controller.getFxmlName()));
         loader.setController(controller);
@@ -87,9 +93,12 @@ public class ViewFactory {
             e.printStackTrace();
         }
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        updateUI(scene);
+        stage.setScene(scene);
         activeStages.add(stage);
         stage.show();
+        return scene;
     }
 
     public void closeStage(Stage stage){
@@ -97,13 +106,20 @@ public class ViewFactory {
         stage.close();
     }
 
-    public void updateUI() {
+    public void updateUI(Scene scene) {
+        //handle css
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource(ColorTheme.getCssPath(colorTheme)).toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(FontSize.getCssPath(fontSize)).toExternalForm());
+    }
+
+    public void updateAllUI(){
         for(Stage stage:activeStages){
             Scene scene = stage.getScene();
-            //handle css
-            scene.getStylesheets().clear();
-            scene.getStylesheets().add(getClass().getResource(ColorTheme.getCssPath(colorTheme)).toExternalForm());
-            scene.getStylesheets().add(getClass().getResource(FontSize.getCssPath(fontSize)).toExternalForm());
+            /*if(scene==loginScene){
+                continue;
+            }*/
+            updateUI(scene);
         }
     }
 }

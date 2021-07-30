@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="272.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="272.0" prefWidth="415.0" styleClass="container" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Slider fx:id="fontSizePicker" layoutX="156.0" layoutY="86.0" prefHeight="14.0" prefWidth="208.0" />
       <ChoiceBox fx:id="themePicker" layoutX="156.0" layoutY="130.0" prefHeight="25.0" prefWidth="208.0" />
@@ -15,10 +15,10 @@
       <Label layoutX="55.0" layoutY="134.0" text="Color Theme:" />
       <Label alignment="CENTER" layoutY="15.0" prefHeight="27.0" prefWidth="415.0" styleClass="big" text="Options">
          <font>
-            <Font name="System Bold Italic" size="18.0" />
+            <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="243.0" layoutY="216.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="17.0" prefWidth="51.0" text="Cancel" />
-      <Button layoutX="324.0" layoutY="216.0" mnemonicParsing="false" onAction="#applyButtonPressed" prefHeight="14.0" prefWidth="51.0" text="Apply" />
+      <Button layoutX="224.0" layoutY="216.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="30.0" prefWidth="77.0" text="Cancel" />
+      <Button layoutX="320.0" layoutY="216.0" mnemonicParsing="false" onAction="#applyButtonPressed" prefHeight="30.0" prefWidth="71.0" text="Apply" />
    </children>
 </AnchorPane>

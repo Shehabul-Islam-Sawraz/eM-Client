@@ -17,15 +17,15 @@
                <image>
                   <Image url="@../Images/logo1.png" />
                </image></ImageView>
-            <Label layoutX="34.0" layoutY="237.0" text="A trusted Email-Client System" textAlignment="CENTER" textFill="#33ff00" textOverrun="CENTER_ELLIPSIS">
+            <Label layoutX="34.0" layoutY="237.0" styleClass="about" text="A trusted Email-Client System" textAlignment="CENTER" textFill="#33ff00" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Bodoni MT Bold Italic" size="20.0" />
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane layoutX="350.0" prefHeight="500.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="350.0" prefHeight="500.0" prefWidth="350.0" styleClass="container" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="email" layoutX="142.0" layoutY="212.0" promptText="s@gmail.com" style="-fx-background-color: transperant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="email" layoutX="142.0" layoutY="212.0" promptText="s@gmail.com" style="-fx-background-color: transperant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" styleClass="emailField" />
             <PasswordField fx:id="password" layoutX="142.0" layoutY="261.0" promptText="Password" style="-fx-background-color: transperant; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
             <Label layoutX="60.0" layoutY="219.0" text="      Email:" textAlignment="CENTER" textFill="#0598ff">
                <font>
@@ -46,12 +46,12 @@
                <image>
                   <Image url="@../Images/login.png" />
                </image></ImageView>
-            <Label layoutX="134.0" layoutY="142.0" text="User Login" textFill="#0598ff">
+            <Label layoutX="134.0" layoutY="142.0" styleClass="loginLabel" text="User Login" textFill="#0598ff">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="errorMsg" alignment="CENTER" layoutX="42.0" layoutY="373.0" prefHeight="19.0" prefWidth="305.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="errorMsg" alignment="CENTER" layoutX="42.0" layoutY="373.0" prefHeight="19.0" prefWidth="305.0" styleClass="errorText" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font size="13.0" />
                </font>

@@ -27,7 +27,7 @@ public class UIUpdateController extends BaseController implements Initializable 
     void applyButtonPressed() {
         viewFactory.setColorTheme(themePicker.getValue());
         viewFactory.setFontSize(FontSize.values()[(int)fontSizePicker.getValue()]);
-        viewFactory.updateUI();
+        viewFactory.updateAllUI();
     }
 
     @FXML

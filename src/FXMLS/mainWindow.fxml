@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="520.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="547.0" prefWidth="865.0" styleClass="container" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.33333333333337123" AnchorPane.topAnchor="1.0">
+      <MenuBar layoutY="1.0" prefHeight="33.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -33,8 +33,8 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TreeView fx:id="emailsTreeView" layoutY="26.0" prefHeight="494.0" prefWidth="192.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="26.0" />
-      <TableView fx:id="emailsTableView" layoutX="192.0" layoutY="26.0" prefHeight="200.0" prefWidth="657.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="26.0">
+      <TreeView fx:id="emailsTreeView" layoutY="27.0" prefHeight="520.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0" />
+      <TableView fx:id="emailsTableView" layoutX="207.0" layoutY="27.0" prefHeight="207.0" prefWidth="657.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="27.0">
         <columns>
           <TableColumn fx:id="senderCol" prefWidth="135.99998474121094" text="Sender" />
           <TableColumn fx:id="subjectCol" prefWidth="150.00003051757812" text="Subject" />
@@ -43,6 +43,6 @@
             <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="124.66668701171875" text="Date" />
         </columns>
       </TableView>
-      <WebView fx:id="emailsWebView" layoutX="193.0" layoutY="227.0" prefHeight="294.0" prefWidth="657.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="193.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="226.0" />
+      <WebView fx:id="emailsWebView" layoutX="208.0" layoutY="234.0" prefHeight="286.0" prefWidth="642.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="234.0" />
    </children>
 </AnchorPane>
