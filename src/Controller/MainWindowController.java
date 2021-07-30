@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.EmailServices.MessageRenderService;
 import FXMLS.ViewFactory;
 import Model.EmailMessage;
 import Model.EmailSizeModifier;
@@ -11,6 +12,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.web.WebView;
 import javafx.util.Callback;
 import sample.EmailManager;
 
@@ -27,6 +29,9 @@ public class MainWindowController extends BaseController implements Initializabl
     private TableView<EmailMessage> emailsTableView;
 
     @FXML
+    private WebView emailsWebView;
+
+    @FXML
     private TableColumn<EmailMessage, String> senderCol;
 
     @FXML
@@ -41,7 +46,7 @@ public class MainWindowController extends BaseController implements Initializabl
     @FXML
     private TableColumn<EmailMessage, Date> dateCol;
 
-
+    private MessageRenderService renderService;
 
     public MainWindowController(EmailManager emailManager, ViewFactory viewFactory, String fxmlName) {
         super(emailManager, viewFactory, fxmlName);
@@ -63,6 +68,8 @@ public class MainWindowController extends BaseController implements Initializabl
         setUpEmailsTableView();
         setUpFolderSelection();
         setUpBoldRows();
+        setUpMessageRendererService();
+        setUpMessageSelection();
     }
 
     private void setEmailsTreeView() {
@@ -107,5 +114,20 @@ public class MainWindowController extends BaseController implements Initializabl
             }
         });
     }
+
+    private void setUpMessageRendererService() {
+        renderService = new MessageRenderService(emailsWebView.getEngine());
+    }
+
+    private void setUpMessageSelection() {
+        emailsTableView.setOnMouseClicked(event -> {
+            EmailMessage emailMessage = emailsTableView.getSelectionModel().getSelectedItem();
+            if(emailMessage != null){
+                renderService.setEmailMessage(emailMessage);
+                renderService.restart();
+            }
+        });
+    }
+
 
 }
