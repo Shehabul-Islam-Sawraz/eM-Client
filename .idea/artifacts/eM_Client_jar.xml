@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="eM-Client:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/eM_Client_jar</output-path>
+    <root id="archive" name="eM-Client.jar">
+      <element id="module-output" name="eM-Client" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/javax.mail.jar" path-in-jar="/" />
+      <element id="library" level="project" name="charm-glisten-4.4.1-javadoc" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/activation.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/javafx-sdk-11.0.2/lib/fontawesomefx-8.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
